@@ -12,10 +12,10 @@
 	let isError = ""
 
 	$: {
-		if ($errors?.[name]) {
+		if ($errors?.[name] || $errors.wholeForm) {
 			isError =
 				Object.keys($errors[name]).some(errorKey => $errors[name][errorKey].error) ||
-				$errors?.day?.isValidDate?.error
+				Object.keys($errors.wholeForm).some(errorKey => $errors.wholeForm[errorKey].error)
 					? "error"
 					: ""
 		}

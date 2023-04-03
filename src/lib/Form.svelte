@@ -4,6 +4,7 @@
 	import { writable } from "svelte/store"
 
 	export let form = {}
+	export let specialValidationFn
 
 	let formElement
 
@@ -25,8 +26,16 @@
 			})
 	}
 
-	const validateForm = data => {
+	const validateForm = (data, fn = null) => {
 		Object.keys(data).forEach(field => validateField(field, data[field]))
+
+		if (fn) {
+			let error = fn(data)
+			errors.update(e => {
+				e.wholeForm = { ...e.wholeForm, ...error }
+				return e
+			})
+		}
 	}
 
 	const onSubmit = e => {
@@ -39,7 +48,8 @@
 			data[key] = value ? Number(value) : null
 		}
 
-		validateForm(data)
+		validateForm(data, specialValidationFn)
+		console.log($errors)
 
 		return dispatch("submit", { valid: isFormValid(), data })
 	}

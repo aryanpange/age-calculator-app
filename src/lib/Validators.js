@@ -53,8 +53,8 @@ const isInThePast = currentYear => {
 }
 
 const isValidDate = monthLength => {
-	return day => {
-		if (Number(day) > monthLength) {
+	return date => {
+		if (date.day > monthLength(date.year)[date.month - 1] && date.day <= 31) {
 			return {
 				isValidDate: {
 					error: true,

@@ -43,11 +43,7 @@
 
 	$: form = {
 		day: {
-			validators: [
-				Validators.required,
-				Validators.isValidDay,
-				Validators.isValidDate(daysInMonths(birthDate.year)[birthDate.month] - 1),
-			],
+			validators: [Validators.required, Validators.isValidDay],
 		},
 
 		month: {
@@ -73,10 +69,15 @@
 </script>
 
 <main class="card">
-	<Form {form} on:submit={onSubmit} bind:this={formElement}>
+	<Form
+		{form}
+		on:submit={onSubmit}
+		bind:this={formElement}
+		specialValidationFn={Validators.isValidDate(daysInMonths)}>
 		<div class="input-wrapper">
 			<Input label="day" name="day" maxlength="2" />
 			<Error fieldName="day" />
+			<Error fieldName="wholeForm" />
 		</div>
 
 		<div class="input-wrapper">
