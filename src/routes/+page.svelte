@@ -75,17 +75,17 @@
 <main class="card">
 	<Form {form} on:submit={onSubmit} bind:this={formElement}>
 		<div class="input-wrapper">
-			<Input label="day" name="day" maxlength="2" {isFormValid} />
+			<Input label="day" name="day" maxlength="2" />
 			<Error fieldName="day" />
 		</div>
 
 		<div class="input-wrapper">
-			<Input label="month" name="month" maxlength="2" {isFormValid} />
+			<Input label="month" name="month" maxlength="2" />
 			<Error fieldName="month" />
 		</div>
 
 		<div class="input-wrapper">
-			<Input label="year" name="year" maxlength="4" {isFormValid} />
+			<Input label="year" name="year" maxlength="4" />
 			<Error fieldName="year" />
 		</div>
 

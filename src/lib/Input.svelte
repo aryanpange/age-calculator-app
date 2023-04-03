@@ -6,11 +6,20 @@
 	export let name
 	export let autocomplete = "off"
 	export let maxlength = ""
-	export let isFormValid = true
 
 	const { errors } = getContext("form")
 
-	$: isError = isFormValid ? "" : "error"
+	let isError = ""
+
+	$: {
+		if ($errors?.[name]) {
+			isError =
+				Object.keys($errors[name]).some(errorKey => $errors[name][errorKey].error) ||
+				$errors?.day?.isValidDate?.error
+					? "error"
+					: ""
+		}
+	}
 </script>
 
 <label for={name} class={isError}>{label}</label>
