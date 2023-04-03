@@ -91,3 +91,9 @@ body {
 
 	background-color: var(--color-neutral-200);
 }
+
+@media (min-width: 40rem) {
+	body {
+		padding: 2rem;
+	}
+}
