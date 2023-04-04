@@ -145,6 +145,7 @@
 		width: 100%;
 
 		font-size: clamp(var(--font-size-600), 15vw, var(--font-size-900));
+		line-height: 0.95;
 		font-weight: 800;
 		font-style: italic;
 		letter-spacing: -2px;
