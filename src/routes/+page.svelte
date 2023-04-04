@@ -63,18 +63,18 @@
 <main class="card">
 	<Form {form} on:submit={onSubmit} bind:this={formElement} sharedValidationFn={Validators.isValidDate(daysInMonths)}>
 		<div class="input-wrapper">
-			<Input label="day" name="day" maxlength="2" {onInput} />
+			<Input label="day" name="day" maxlength="2" {onInput} placeholder="DD" />
 			<Error fieldName="day" />
 			<Error fieldName="shared" />
 		</div>
 
 		<div class="input-wrapper">
-			<Input label="month" name="month" maxlength="2" {onInput} />
+			<Input label="month" name="month" maxlength="2" {onInput} placeholder="MM" />
 			<Error fieldName="month" />
 		</div>
 
 		<div class="input-wrapper">
-			<Input label="year" name="year" maxlength="4" {onInput} />
+			<Input label="year" name="year" maxlength="4" {onInput} placeholder="YYYY" />
 			<Error fieldName="year" />
 		</div>
 
@@ -145,10 +145,9 @@
 		width: 100%;
 
 		font-size: clamp(var(--font-size-600), 15vw, var(--font-size-900));
-		line-height: 0.95;
+		line-height: 1;
 		font-weight: 800;
 		font-style: italic;
-		letter-spacing: -2px;
 	}
 
 	.results__value {
