@@ -45,10 +45,7 @@
 		},
 	}
 
-	const onInput = e => {
-		let pattern = /[^0-9]/
-		e.target.value = e.target.value.replace(pattern, "")
-	}
+	const onInput = e => (e.target.value = e.target.value.replace(/[^0-9]/, ""))
 
 	const onSubmit = e => {
 		if (e?.detail?.valid) {

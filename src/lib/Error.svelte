@@ -7,11 +7,9 @@
 
 	let messages = []
 
-	$: errorsLocal = $errors?.[fieldName] ?? null
-
 	$: {
-		if (errorsLocal) {
-			messages = Object.values(errorsLocal)
+		if ($errors?.[fieldName]) {
+			messages = Object.values($errors[fieldName])
 				.map(value => value.message)
 				.filter(message => message)
 		}

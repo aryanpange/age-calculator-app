@@ -7,9 +7,9 @@
 	export let sharedValidationFn
 
 	let formElement
+	let errors = writable({})
 
 	const dispatch = createEventDispatcher()
-	let errors = writable({})
 
 	const isFormValid = () => {
 		return !Object.values($errors).some(field => Object.values(field).some(errorObject => errorObject.error))
@@ -49,7 +49,6 @@
 		}
 
 		validateForm(data, sharedValidationFn)
-		console.log($errors)
 
 		return dispatch("submit", { valid: isFormValid(), data })
 	}
