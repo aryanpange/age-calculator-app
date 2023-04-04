@@ -26,9 +26,6 @@
 	// Form validation
 
 	let formElement
-
-	let isFormValid = true
-
 	let results = {}
 
 	$: form = {
@@ -49,11 +46,9 @@
 
 	const onSubmit = e => {
 		if (e?.detail?.valid) {
-			isFormValid = true
 			results = calculateAge(currentDate(), e.detail.data, daysInMonths)
 			console.log(results)
 		} else {
-			isFormValid = false
 			results = {}
 			console.log("Invalid form")
 		}
