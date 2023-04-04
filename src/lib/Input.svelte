@@ -6,6 +6,7 @@
 	export let name
 	export let autocomplete = "off"
 	export let maxlength = ""
+	export let onInput = e => {}
 
 	const { errors } = getContext("form")
 
@@ -23,7 +24,7 @@
 </script>
 
 <label for={name} class={isError}>{label}</label>
-<input {type} {name} id={name} class={isError} {autocomplete} {maxlength} />
+<input {type} {name} id={name} class={isError} {autocomplete} {maxlength} on:input={onInput} />
 
 <style>
 	input {

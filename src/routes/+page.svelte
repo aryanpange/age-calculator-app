@@ -8,16 +8,6 @@
 	import Input from "../lib/Input.svelte"
 	import Error from "../lib/Error.svelte"
 
-	let userDay = ""
-	let userMonth = ""
-	let userYear = ""
-
-	$: birthDate = {
-		day: Number(userDay),
-		month: Number(userMonth),
-		year: Number(userYear),
-	}
-
 	const currentDate = () => {
 		const today = new Date()
 
@@ -55,6 +45,11 @@
 		},
 	}
 
+	const onInput = e => {
+		let pattern = /[^0-9]/
+		e.target.value = e.target.value.replace(pattern, "")
+	}
+
 	const onSubmit = e => {
 		if (e?.detail?.valid) {
 			isFormValid = true
@@ -71,18 +66,18 @@
 <main class="card">
 	<Form {form} on:submit={onSubmit} bind:this={formElement} sharedValidationFn={Validators.isValidDate(daysInMonths)}>
 		<div class="input-wrapper">
-			<Input label="day" name="day" maxlength="2" />
+			<Input label="day" name="day" maxlength="2" {onInput} />
 			<Error fieldName="day" />
 			<Error fieldName="shared" />
 		</div>
 
 		<div class="input-wrapper">
-			<Input label="month" name="month" maxlength="2" />
+			<Input label="month" name="month" maxlength="2" {onInput} />
 			<Error fieldName="month" />
 		</div>
 
 		<div class="input-wrapper">
-			<Input label="year" name="year" maxlength="4" />
+			<Input label="year" name="year" maxlength="4" {onInput} />
 			<Error fieldName="year" />
 		</div>
 
