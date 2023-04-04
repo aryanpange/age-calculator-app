@@ -73,7 +73,7 @@
 			height: 4.5rem;
 			padding-inline: 1.5rem;
 
-			font-size: var(--font-size-300);
+			font-size: var(--font-size-400);
 		}
 
 		label {
