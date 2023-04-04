@@ -69,15 +69,11 @@
 </script>
 
 <main class="card">
-	<Form
-		{form}
-		on:submit={onSubmit}
-		bind:this={formElement}
-		specialValidationFn={Validators.isValidDate(daysInMonths)}>
+	<Form {form} on:submit={onSubmit} bind:this={formElement} sharedValidationFn={Validators.isValidDate(daysInMonths)}>
 		<div class="input-wrapper">
 			<Input label="day" name="day" maxlength="2" />
 			<Error fieldName="day" />
-			<Error fieldName="wholeForm" />
+			<Error fieldName="shared" />
 		</div>
 
 		<div class="input-wrapper">

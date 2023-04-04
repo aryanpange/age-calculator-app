@@ -12,10 +12,10 @@
 	let isError = ""
 
 	$: {
-		if ($errors?.[name] || $errors.wholeForm) {
+		if ($errors?.[name] || $errors.shared) {
 			isError =
 				Object.keys($errors[name]).some(errorKey => $errors[name][errorKey].error) ||
-				Object.keys($errors.wholeForm).some(errorKey => $errors.wholeForm[errorKey].error)
+				Object.keys($errors.shared).some(errorKey => $errors.shared[errorKey].error)
 					? "error"
 					: ""
 		}

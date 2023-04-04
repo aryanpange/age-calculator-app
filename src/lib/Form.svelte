@@ -4,7 +4,7 @@
 	import { writable } from "svelte/store"
 
 	export let form = {}
-	export let specialValidationFn
+	export let sharedValidationFn
 
 	let formElement
 
@@ -32,7 +32,7 @@
 		if (fn) {
 			let error = fn(data)
 			errors.update(e => {
-				e.wholeForm = { ...e.wholeForm, ...error }
+				e.shared = { ...e.shared, ...error }
 				return e
 			})
 		}
@@ -48,7 +48,7 @@
 			data[key] = value ? Number(value) : null
 		}
 
-		validateForm(data, specialValidationFn)
+		validateForm(data, sharedValidationFn)
 		console.log($errors)
 
 		return dispatch("submit", { valid: isFormValid(), data })
